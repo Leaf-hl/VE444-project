@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -ex
+
+# running GNN models with optimal paraemters on Politifact dataset
+
+# UPFD-GCN
+python -u model.py --model 'gcn' --feature 'spacy' --epochs 80 --lr 0.001 --nhid 128 --batch_size 128 --dataset 'politifact' --concat True &&
+
+# UPFD-GAT
+python -u model.py --model 'gat' --feature 'bert' --epochs 80 --lr 0.001 --nhid 128 --batch_size 128 --dataset 'politifact' --concat True &&
+
+# UPFD-SAGE
+python -u model.py --model 'sage' --feature 'bert' --epochs 80 --lr 0.01 --nhid 128 --batch_size 128 --dataset 'politifact' --concat True &&
+
+
+# running GNN models with optimal paraemters on Gossipcop dataset
+
+# UPFD-GCN
+python -u model.py --model 'gcn' --feature 'bert' --epochs 80 --lr 0.001 --nhid 128 --batch_size 128 --dataset 'gossipcop' --concat True &&
+
+# UPFD-GAT
+python -u model.py --model 'gat' --feature 'bert' --epochs 80 --lr 0.001 --nhid 128 --batch_size 128 --dataset 'gossipcop' --concat True &&
+
+# UPFD-SAGE
+python -u model.py --model 'sage' --feature 'bert' --epochs 80 --lr 0.001 --nhid 128 --batch_size 128 --dataset 'gossipcop' --concat True
+
+
